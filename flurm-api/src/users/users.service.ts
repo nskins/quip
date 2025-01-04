@@ -6,10 +6,7 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-    constructor(@InjectRepository(User) private UserRepository : Repository<User>)
-    {
-
-    }
+    constructor(@InjectRepository(User) private UserRepository : Repository<User>) {}
 
     async getAll(): Promise<User[]>{
         return await this.UserRepository.find();

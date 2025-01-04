@@ -3,6 +3,8 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 
+export type AccessTokenResponse = { access_token: string };
+
 @Injectable()
 export class AuthService {
     constructor(
@@ -24,8 +26,7 @@ export class AuthService {
         return null;
     }
 
-    // TODO: fix the parameter type
-    async login(user: any) {
+    async login(user: {id: number, email: string}): Promise<AccessTokenResponse> {
         const payload = { email: user.email, sub: user.id };
 
         return {
