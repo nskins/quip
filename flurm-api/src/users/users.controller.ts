@@ -2,7 +2,7 @@ import { Controller, Get, Post, Param, Put, Delete, Body, UseGuards, Request} fr
 import { UsersService } from './users.service';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { User } from './user.entity';
-import { AuthGuard } from '@nestjs/passport';
+import { LocalAuthGuard } from 'src/auth/local-auth.guard';
 
 type UserParams = { id: number };
 
@@ -35,7 +35,7 @@ export class UsersController {
         return await this.UsersService.delete(params.id);
     }
 
-    @UseGuards(AuthGuard('local'))
+    @UseGuards(LocalAuthGuard)
     @Post('login')
     async login(@Request() req) {
         return req.user;
