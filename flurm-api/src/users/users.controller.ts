@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { User } from './user.entity';
 
+type UserParams = { id: number };
 
 @Controller('users')
 export class UsersController {
@@ -19,17 +20,17 @@ export class UsersController {
     }
 
     @Get(':id')
-    async getOne(@Param() id: number): Promise<User> {
-        return await this.UsersService.getOne(id);
+    async getOne(@Param() params: UserParams): Promise<User> {
+        return await this.UsersService.getOne(params.id);
     }
 
     @Put(':id')
-    async update(@Param() id: number, @Body() user: User) : Promise<UpdateResult> {
-        return await this.UsersService.update(id, user);
+    async update(@Param() params: UserParams, @Body() user: User) : Promise<UpdateResult> {
+        return await this.UsersService.update(params.id, user);
     }
 
     @Delete(':id')
-    async delete(@Param() id : number) : Promise<DeleteResult> {
-        return await this.UsersService.delete(id);
+    async delete(@Param() params: UserParams) : Promise<DeleteResult> {
+        return await this.UsersService.delete(params.id);
     }
 }
