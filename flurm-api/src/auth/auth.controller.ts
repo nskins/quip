@@ -1,43 +1,47 @@
 import { Controller, Get, Post, Param, Put, Delete, Body, UseGuards, Request} from '@nestjs/common';
-import { UsersService } from './users.service';
+import { UsersService } from '../users/users.service';
 import { UpdateResult, DeleteResult } from 'typeorm';
-import { User } from './user.entity';
-import { LocalAuthGuard } from 'src/auth/local-auth.guard';
+import { User } from '../users/user.entity';
+import { LocalAuthGuard } from './local-auth.guard';
+import { AuthService } from './auth.service';
 
 type UserParams = { id: number };
 
 @Controller('users')
-export class UsersController {
-    constructor(private UsersService : UsersService) {}
+export class AuthController {
+    constructor(
+        private usersService : UsersService,
+        private authService: AuthService
+    ) {}
 
     @Get()
     async getAll() : Promise<User[]> {
-        return await this.UsersService.getAll()
+        return await this.usersService.getAll()
     }
 
     @Post()
     async create(@Body() user : User) : Promise<User> {
-        return await this.UsersService.create(user);
+        return await this.usersService.create(user);
     }
 
     @Get(':id')
     async getOne(@Param() params: UserParams): Promise<User> {
-        return await this.UsersService.getOne(params.id);
+        return await this.usersService.getOne(params.id);
     }
 
     @Put(':id')
     async update(@Param() params: UserParams, @Body() user: User) : Promise<UpdateResult> {
-        return await this.UsersService.update(params.id, user);
+        return await this.usersService.update(params.id, user);
     }
 
     @Delete(':id')
     async delete(@Param() params: UserParams) : Promise<DeleteResult> {
-        return await this.UsersService.delete(params.id);
+        return await this.usersService.delete(params.id);
     }
 
     @UseGuards(LocalAuthGuard)
     @Post('login')
     async login(@Request() req) {
-        return req.user;
+        return this.authService.login(req.user);
     }
 }

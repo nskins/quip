@@ -1,0 +1,3 @@
+export const jwtConstants = {
+    secret: 'OOGA BOOGA THIS SHOULD COME FROM AN ENVIRONMENT VARIABLE IN PRODUCTION'
+};
