@@ -26,6 +26,14 @@ export class UsersService {
         });
     }
 
+    async getByEmail(email: string): Promise<User> {
+        return await this.UserRepository.findOne({
+            where: {
+                email: email
+            }
+        });
+    }
+
     async update(id: number, user: User): Promise<UpdateResult>{
         return await this.UserRepository.update(id, user);
     }

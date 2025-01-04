@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Param, Put, Delete, Body } from '@nestjs/common';
+import { Controller, Get, Post, Param, Put, Delete, Body, UseGuards, Request} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { User } from './user.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 type UserParams = { id: number };
 
@@ -32,5 +33,11 @@ export class UsersController {
     @Delete(':id')
     async delete(@Param() params: UserParams) : Promise<DeleteResult> {
         return await this.UsersService.delete(params.id);
+    }
+
+    @UseGuards(AuthGuard('local'))
+    @Post('login')
+    async login(@Request() req) {
+        return req.user;
     }
 }
