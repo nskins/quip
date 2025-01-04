@@ -4,6 +4,7 @@ import { UpdateResult, DeleteResult } from 'typeorm';
 import { User } from '../users/user.entity';
 import { LocalAuthGuard } from './local-auth.guard';
 import { AuthService } from './auth.service';
+import { JwtAuthGuard } from './jwt-auth.guard';
 
 type UserParams = { id: number };
 
@@ -24,6 +25,7 @@ export class AuthController {
         return await this.usersService.create(user);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(':id')
     async getOne(@Param() params: UserParams): Promise<User> {
         return await this.usersService.getOne(params.id);
