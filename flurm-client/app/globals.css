@@ -15,6 +15,9 @@
 }
 
 body {
+  input {
+    color: #0a0a0a;
+  }
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
