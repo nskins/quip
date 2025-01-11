@@ -10,14 +10,14 @@ export default function LoginForm() {
     const [state, formAction] = useActionState(login, initialState);
 
     return (
-        <>
+        <div className="flex flex-col gap-4 w-80">
             <h1>Login</h1>
             {state && state.error && <p>{state.error}</p>}
-            <form action={formAction}>
+            <form action={formAction} className="flex flex-col gap-4">
                 <input type="email" name="email" required />
                 <input type="password" name="password" required />
                 <button type="submit">Log In</button>
             </form>
-        </>
+        </div>
     )
 }
