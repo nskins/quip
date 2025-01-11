@@ -1,5 +1,6 @@
 'use server'
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export async function login(previousState: { error: string }, formData: FormData) {
 
@@ -21,6 +22,7 @@ export async function login(previousState: { error: string }, formData: FormData
         cookieStore.set('access_token', json.access_token);
 
         // TODO: redirect to user dashboard
+        redirect('/dashboard')
 
         return { error: '' }
     }
