@@ -1,12 +1,8 @@
 'use client'
-import { useState, useActionState } from 'react'
+import { useActionState } from 'react'
 import { login } from './login'
 
 export default function LoginForm() {
-    // TODO: I think we can remove email and password from state.
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-
     const initialState = {
         error: ''
     };
@@ -18,8 +14,8 @@ export default function LoginForm() {
             <h1>Login</h1>
             {state && state.error && <p>{state.error}</p>}
             <form action={formAction}>
-                <input type="email" name="email" required onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" name="password" required onChange={(e) => setPassword(e.target.value)} />
+                <input type="email" name="email" required />
+                <input type="password" name="password" required />
                 <button type="submit">Log In</button>
             </form>
         </>
