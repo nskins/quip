@@ -21,10 +21,7 @@ export async function login(previousState: { error: string }, formData: FormData
 
         cookieStore.set('access_token', json.access_token);
 
-        // TODO: redirect to user dashboard
         redirect('/dashboard')
-
-        return { error: '' }
     }
     else {
         return { error: 'Invalid credentials' }
