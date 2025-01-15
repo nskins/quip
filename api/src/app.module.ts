@@ -4,15 +4,11 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { dataSourceOptions } from 'db/data-source';
 
 @Module({
   imports: [UsersModule,
-    TypeOrmModule.forRoot({
-      type: "sqlite",
-      database: "flamchat-db.sqlite3",
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true // TODO: switch to false for production
-    }),
+    TypeOrmModule.forRoot(dataSourceOptions),
     AuthModule
   ],
   controllers: [AppController],
