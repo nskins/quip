@@ -9,7 +9,7 @@ import { AuthModule } from './auth/auth.module';
   imports: [UsersModule,
     TypeOrmModule.forRoot({
       type: "sqlite",
-      database: "flurm-db.sqlite3",
+      database: "flamchat-db.sqlite3",
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true // TODO: switch to false for production
     }),
