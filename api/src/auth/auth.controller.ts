@@ -8,19 +8,19 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 
 type UserParams = { id: number };
 
-@Controller('users')
+@Controller('auth')
 export class AuthController {
     constructor(
         private usersService : UsersService,
         private authService: AuthService
     ) {}
 
-    @Get()
+    @Get('users')
     async getAll() : Promise<User[]> {
         return await this.usersService.getAll()
     }
 
-    @Post()
+    @Post('signup')
     async create(@Body() credentials : {email: string, password: string}) : Promise<AccessTokenResponse> {
         const user = await this.usersService.create(credentials);
 
@@ -28,17 +28,17 @@ export class AuthController {
     }
 
     @UseGuards(JwtAuthGuard)
-    @Get(':id')
+    @Get('users/:id')
     async getOne(@Param() params: UserParams): Promise<User> {
         return await this.usersService.getOne(params.id);
     }
 
-    @Put(':id')
+    @Put('users/:id')
     async update(@Param() params: UserParams, @Body() user: User) : Promise<UpdateResult> {
         return await this.usersService.update(params.id, user);
     }
 
-    @Delete(':id')
+    @Delete('users/:id')
     async delete(@Param() params: UserParams) : Promise<DeleteResult> {
         return await this.usersService.delete(params.id);
     }
