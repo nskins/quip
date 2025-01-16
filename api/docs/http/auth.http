@@ -1,0 +1,46 @@
+@host = http://localhost:3001
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1lQGJyaWNrcy5jb20iLCJzdWIiOjEsImlhdCI6MTczNjk5Mjc3MywiZXhwIjoxNzM2OTkyODMzfQ.Maiw3qHNzCsoODbtWpNvT2F8VdXS-KHQLzDdsKZkcLg
+@userId = 1
+
+### Login
+
+POST {{host}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "bing@joe.com",
+    "password": "asdf"
+}
+
+### Get users
+
+GET {{host}}/auth/users HTTP/1.1
+
+### Signup user
+
+POST {{host}}/auth/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "me@bricks.com",
+    "password": "fleem"
+}
+
+### Get user by ID
+
+GET {{host}}/auth/users/{{userId}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+### Update user by ID
+
+PUT {{host}}/auth/users/{{userId}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "floom@jumbo.com",
+    "hashedPassword": "gfjdkde"
+}
+
+### Delete user by ID
+
+DELETE {{host}}/auth/users/{{userId}} HTTP/1.1

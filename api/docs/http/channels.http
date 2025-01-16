@@ -1,0 +1,7 @@
+@host = http://localhost:3001
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJpbmdAam9lLmNvbSIsInN1YiI6MiwiaWF0IjoxNzM2OTkzMDcyLCJleHAiOjE3MzY5OTMxMzJ9.1HXsEH39meqqKhIGtKLto6WVD8e9xfquiigydMtFt7w
+
+### Get channels
+
+GET {{host}}/channels HTTP/1.1
+Authorization: Bearer {{token}}
