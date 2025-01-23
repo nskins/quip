@@ -1,3 +1,6 @@
+import ChannelNavbar from "./channel-navbar";
+import { getChannels } from "./getChannels";
+
 export default async function ChannelNamePage({
     params
 }: {
@@ -5,10 +8,15 @@ export default async function ChannelNamePage({
 }) {
     const name = (await params).name
 
-    // TODO: get the channels
+    // TODO: we need to verify the channel name is an existing channel
+
+    const channels = await getChannels()
+    
     // TODO: get the channel messages for the active channel
 
     return (
-        <div>{name}</div>
+        <div>
+            <ChannelNavbar channels={channels} /> 
+        </div>
     );
 }
