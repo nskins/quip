@@ -21,7 +21,7 @@ export async function login(previousState: { error: string }, formData: FormData
 
         cookieStore.set('access_token', json.access_token);
 
-        redirect('/dashboard')
+        redirect('/channels/random')
     }
     else {
         return { error: 'Invalid credentials' }

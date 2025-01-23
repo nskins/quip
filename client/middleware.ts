@@ -17,7 +17,7 @@ export default async function middleware(req: NextRequest) {
   }
 
   if (isPublicRoute && access_token) {
-    return NextResponse.redirect(new URL('/dashboard', req.nextUrl))
+    return NextResponse.redirect(new URL('/channels/random', req.nextUrl))
   }
  
   return NextResponse.next()

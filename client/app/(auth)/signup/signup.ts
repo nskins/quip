@@ -26,7 +26,7 @@ export async function signup(previousState: { error: string }, formData: FormDat
 
         cookieStore.set('access_token', json.access_token);
 
-        redirect('/dashboard')
+        redirect('/channels/random')
     }
     else {
         return { error: 'An error occurred' }
