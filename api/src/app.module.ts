@@ -6,14 +6,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { dataSourceOptions } from 'db/data-source';
 import { ChannelsModule } from './channels/channels.module';
-import { ChannelMessagesModule } from './channel-messages/channel-messages.module';
 
 @Module({
   imports: [UsersModule,
     TypeOrmModule.forRoot(dataSourceOptions),
     AuthModule,
-    ChannelsModule,
-    ChannelMessagesModule
+    ChannelsModule
   ],
   controllers: [AppController],
   providers: [AppService],
