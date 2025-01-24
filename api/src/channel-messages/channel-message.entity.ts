@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
-import { Channel } from './channel.entity';
+import { Channel } from '../channels/channel.entity';
 import { User } from 'src/users/user.entity';
 
 @Entity()

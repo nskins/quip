@@ -1,4 +1,4 @@
-import { ChannelMessage } from 'src/channels/channel-message.entity';
+import { ChannelMessage } from '../channel-messages/channel-message.entity';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 
 @Entity()

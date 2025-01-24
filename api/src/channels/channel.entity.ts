@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
-import { ChannelMessage } from './channel-message.entity';
+import { ChannelMessage } from '../channel-messages/channel-message.entity';
 
 @Entity()
 export class Channel {
