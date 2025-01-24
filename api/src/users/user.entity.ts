@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { ChannelMessage } from 'src/channels/channel-message.entity';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class User {
@@ -10,6 +11,9 @@ export class User {
 
     @Column()
     hashedPassword: string
+
+    @OneToMany(() => ChannelMessage, (message) => message.channel)
+    messages : ChannelMessage[]
 
     @CreateDateColumn()
     createdAt: Date
