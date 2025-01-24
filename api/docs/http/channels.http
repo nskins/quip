@@ -1,7 +1,14 @@
 @host = http://localhost:3001
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJpbmdAam9lLmNvbSIsInN1YiI6MiwiaWF0IjoxNzM2OTkzMDcyLCJleHAiOjE3MzY5OTMxMzJ9.1HXsEH39meqqKhIGtKLto6WVD8e9xfquiigydMtFt7w
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJpbmdAam9lLmNvbSIsInN1YiI6MywiaWF0IjoxNzM3NjgzMjg4LCJleHAiOjE3Mzc3Njk2ODh9.NpANl2_8rdDsZBh8fORycPK253cBLQXJoFkEeYqONlQ
+@channelId = 1
+@timestamp = 2025-01-24T12:00:00
 
 ### Get channels
 
 GET {{host}}/channels HTTP/1.1
+Authorization: Bearer {{token}}
+
+### Get channel messages
+
+GET {{host}}/channels/{{channelId}}/messages?timestamp={{timestamp}} HTTP/1.1
 Authorization: Bearer {{token}}
