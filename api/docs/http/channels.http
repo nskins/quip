@@ -1,7 +1,7 @@
 @host = http://localhost:3001
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJpbmdAam9lLmNvbSIsInN1YiI6MywiaWF0IjoxNzM3NjgzMjg4LCJleHAiOjE3Mzc3Njk2ODh9.NpANl2_8rdDsZBh8fORycPK253cBLQXJoFkEeYqONlQ
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJpbmdAam9lLmNvbSIsInN1YiI6MywiaWF0IjoxNzM4MDIzMjY3LCJleHAiOjE3MzgxMDk2Njd9.Iq5NdoIyETfJhgCjl0nSbHITIRz4NUgnmTPq_2Tf1Fs
 @channelId = 1
-@timestamp = 2025-01-24T12:00:00
+@timestamp = 2025-01-30T12:00:00
 
 ### Get channels
 
@@ -12,3 +12,13 @@ Authorization: Bearer {{token}}
 
 GET {{host}}/channels/{{channelId}}/messages?timestamp={{timestamp}} HTTP/1.1
 Authorization: Bearer {{token}}
+
+### Create channel message
+
+POST {{host}}/channels/{{channelId}}/messages
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "text": "This is a test messasge"
+}
