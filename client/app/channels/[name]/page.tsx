@@ -7,17 +7,20 @@ export default async function ChannelNamePage({
 }: {
     params: Promise<{ name: string }>
 }) {
-    const name = (await params).name
-
-    // TODO: we need to verify the channel name is an existing channel
+    const activeChannelName = (await params).name
 
     const channels = await getChannels()
+    const activeChannel = channels.find(c => c.name === activeChannelName)
+
+    // TODO: We should handle an unavailable channel better.
+    if (activeChannel === undefined)
+        throw "404 CHANNEL NOT FOUND"
 
     // TODO: get the channel messages for the active channel
 
     return (
         <div>
-            <ChannelNavbar channels={channels} />
+            <ChannelNavbar channels={channels} activeChannelId={activeChannel.id} />
             <LogoutButton />
         </div>
     );
