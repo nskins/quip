@@ -9,8 +9,6 @@ export async function getChannels(): Promise<Channel[]> {
 
     const access_token = cookieStore.get('access_token')?.value
 
-    console.log(access_token)
-
     // TODO: if access token is empty/null, redirect to login page.
 
     const data = await fetch('http://localhost:3001/channels', {
@@ -18,8 +16,6 @@ export async function getChannels(): Promise<Channel[]> {
     })
 
     const channels = await data.json()
-
-    console.log(channels)
 
     return channels
 }

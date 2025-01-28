@@ -1,6 +1,8 @@
 import ChannelNavbar from "./channel-navbar";
 import { getChannels } from "./getChannels";
+import { getChannelMessages } from "./getChannelMessages"
 import LogoutButton from "./logout-button";
+import MessageList from "./message-list";
 
 export default async function ChannelNamePage({
     params
@@ -16,11 +18,13 @@ export default async function ChannelNamePage({
     if (activeChannel === undefined)
         throw "404 CHANNEL NOT FOUND"
 
-    // TODO: get the channel messages for the active channel
+    const currentTime = new Date().toISOString()
+    const messages = await getChannelMessages({ channelId: activeChannel.id, timestamp: currentTime })
 
     return (
         <div>
             <ChannelNavbar channels={channels} activeChannelId={activeChannel.id} />
+            <MessageList messages={messages} />
             <LogoutButton />
         </div>
     );
