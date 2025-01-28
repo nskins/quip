@@ -9,10 +9,11 @@ const MessageBlockSize : number = 25
 export class ChannelMessagesService {
     constructor(@InjectRepository(ChannelMessage) private ChannelMessageRepository : Repository<ChannelMessage>) {}
 
-    async getMessageBlock(channelId : number, timestamp : Date) {
+    async getBlock(channelId : number, timestamp : Date) {
         return await this.ChannelMessageRepository.find({
             relations: {
-                channel: true
+                channel: true,
+                user: true
             },
             where: {
                 channel: {
@@ -22,5 +23,21 @@ export class ChannelMessagesService {
             },
             take: MessageBlockSize
         })
+    }
+
+    async create(payload: {
+        channelId: number, 
+        userId: number,
+        text: string,
+    }) : Promise<ChannelMessage> {
+        return await this.ChannelMessageRepository.save({
+            channel: {
+                id: payload.channelId
+            },
+            user: {
+                id: payload.userId
+            },
+            text: payload.text
+        });
     }
 }
