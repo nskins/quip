@@ -1,4 +1,5 @@
 import { Channel } from './channel'
+import Link from 'next/link'
 
 export default function ChannelNavbar({ 
     channels, 
@@ -12,8 +13,8 @@ export default function ChannelNavbar({
             <h1>Channels</h1>
             {channels && channels.map(c =>
                 (c.id === activeChannelId) ? 
-                <div className="bg-pink-200 text-black font-bold" key={c.id}>{c.name}</div> : 
-                <div key={c.id}>{c.name}</div>         
+                <Link href={`/channels/${c.name}`} className="bg-pink-200 text-black font-bold" key={c.id}>{c.name}</Link> : 
+                <Link href={`/channels/${c.name}`} key={c.id}>{c.name}</Link>         
             )}
         </div>
     )
