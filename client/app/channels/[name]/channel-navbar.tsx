@@ -9,7 +9,7 @@ export default function ChannelNavbar({
     activeChannelId: number 
 }) {
     return (
-        <div className="flex flex-col gap-4 w-80">
+        <div className="flex flex-col gap-4 w-48 h-screen">
             <h1>Channels</h1>
             {channels && channels.map(c =>
                 (c.id === activeChannelId) ? 

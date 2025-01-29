@@ -6,7 +6,7 @@ export default function MessageList({
     messages: GetChannelMessageDto[]
 }) {
     return (
-        <div className="flex flex-col gap-4 w-80">
+        <div className="flex flex-col gap-4 w-screen">
             <h1>Messages</h1>
             {messages && messages.map(m =>
                 <div key={m.id}>
