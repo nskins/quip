@@ -22,7 +22,7 @@ export default async function ChannelNamePage({
     const messages = await getChannelMessages({ channelId: activeChannel.id, timestamp: currentTime })
 
     return (
-        <div>
+        <div className="flex flex-row">
             <ChannelNavbar channels={channels} activeChannelId={activeChannel.id} />
             <MessageList messages={messages} />
             <LogoutButton />

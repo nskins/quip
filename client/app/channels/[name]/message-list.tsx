@@ -1,15 +1,19 @@
-import { ChannelMessage } from './channel-message'
+import { GetChannelMessageDto } from "./getChannelMessages"
 
 export default function MessageList({ 
     messages 
 } : { 
-    messages: ChannelMessage[]
+    messages: GetChannelMessageDto[]
 }) {
     return (
         <div className="flex flex-col gap-4 w-80">
             <h1>Messages</h1>
             {messages && messages.map(m =>
-                <div key={m.id}>{m.text}</div>       
+                <div key={m.id}>
+                    <div>{m.user.email}</div>
+                    <div>{m.text}</div>
+                    <div>{m.createdAt.toString()}</div>
+                </div>    
             )}
         </div>
     )

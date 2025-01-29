@@ -1,7 +1,21 @@
 'use server'
 
 import { cookies } from "next/headers";
-import { ChannelMessage } from "./channel-message";
+
+export type GetChannelMessageDto = {
+    id : number
+    text : string
+    createdAt : Date
+    updatedAt : Date
+    channel : {
+        id : number
+        name : string
+    }
+    user : {
+        id : number
+        email : string
+    }
+}
 
 export async function getChannelMessages({
     channelId,
@@ -9,7 +23,7 @@ export async function getChannelMessages({
 } : {
     channelId : number,
     timestamp : string
-}): Promise<ChannelMessage[]> {
+}): Promise<GetChannelMessageDto[]> {
 
     const cookieStore = await cookies();
 
