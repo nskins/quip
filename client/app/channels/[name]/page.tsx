@@ -3,6 +3,7 @@ import { getChannels } from "./getChannels";
 import { getChannelMessages } from "./getChannelMessages"
 import LogoutButton from "./logout-button";
 import MessageList from "./message-list";
+import Header from "./header";
 
 export default async function ChannelNamePage({
     params
@@ -22,10 +23,13 @@ export default async function ChannelNamePage({
     const messages = await getChannelMessages({ channelId: activeChannel.id, timestamp: currentTime })
 
     return (
-        <div className="flex flex-row">
-            <ChannelNavbar channels={channels} activeChannelId={activeChannel.id} />
-            <MessageList messages={messages} />
-            <LogoutButton />
+        <div className="flex flex-col">
+            <Header />
+            <div className="flex flex-row">
+                <ChannelNavbar channels={channels} activeChannelId={activeChannel.id} />
+                <MessageList messages={messages} />
+            </div>
         </div>
+        
     );
 }
