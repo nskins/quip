@@ -7,7 +7,6 @@ export default function MessageList({
 }) {
     return (
         <div className="flex flex-col gap-4 w-full">
-            <h1>Messages</h1>
             {messages && messages.map(m =>
                 <div key={m.id}>
                     <div>{m.user.email}</div>

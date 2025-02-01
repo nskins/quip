@@ -29,8 +29,10 @@ export default async function ChannelNamePage({
             <div className="flex flex-row w-screen grow">
                 <ChannelNavbar channels={channels} activeChannelId={activeChannel.id} />
                 <div className="flex flex-col w-screen">
-                    <MessageList messages={messages} />
-                    <div className="flex flex-col justify-self-end">
+                    <div className="grow">
+                        <MessageList messages={messages} />
+                    </div>
+                    <div>
                         <NewMessagePiece />
                     </div>
                 </div>
