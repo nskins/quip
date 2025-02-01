@@ -1,7 +1,6 @@
 import ChannelNavbar from "./channel-navbar";
 import { getChannels } from "./getChannels";
 import { getChannelMessages } from "./getChannelMessages"
-import LogoutButton from "./logout-button";
 import MessageList from "./message-list";
 import Header from "./header";
 import NewMessagePiece from "./new-message-piece";
