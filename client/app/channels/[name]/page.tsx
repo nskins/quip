@@ -32,7 +32,7 @@ export default async function ChannelNamePage({
                         <MessageList messages={messages} />
                     </div>
                     <div>
-                        <NewMessagePiece />
+                        <NewMessagePiece channelId={activeChannel.id} />
                     </div>
                 </div>
             </div>
