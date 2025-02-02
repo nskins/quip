@@ -22,7 +22,21 @@ export class ChannelMessagesService {
                 createdAt: LessThan(timestamp)
             },
             take: MessageBlockSize
-        })
+        });
+    }
+
+    async getById(id : number) : Promise<ChannelMessage | null> {
+        const results = await this.ChannelMessageRepository.find({
+            relations: {
+                channel: true,
+                user: true
+            },
+            where: {
+                id: id
+            }
+        });
+
+        return results.length > 0 ? results[0] : null;
     }
 
     async create(payload: {

@@ -45,8 +45,13 @@ export class ChannelsController {
                 text: body.text
             });
 
-            this.channelMessagesGateway.emitMessageCreated(message);
+            // TypeORM does not return the full entity (with relations) on create.
+            // Thus, one must reload the message to retrieve the full entity.
+            // https://github.com/typeorm/typeorm/issues/3490
+            const fullMessage = await this.channelMessagesService.getById(message.id);
 
-            return message;
+            this.channelMessagesGateway.emitMessageCreated(fullMessage);
+
+            return fullMessage;
         }
 }
