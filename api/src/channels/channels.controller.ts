@@ -4,6 +4,8 @@ import { Channel } from './channel.entity';
 import { ChannelsService } from './channels.service';
 import { ChannelMessagesService } from '../channel-messages/channel-messages.service';
 import { ChannelMessagesGateway } from 'src/channel-messages/channel-messages.gateway';
+import { CurrentUser } from 'src/current-user.decorator';
+import { User } from 'src/users/user.entity';
 
 type CreateMessageBody = {
     text : string
@@ -32,15 +34,19 @@ export class ChannelsController {
 
     @UseGuards(JwtAuthGuard)
     @Post(':id/messages')
-    async createChannelMessage(@Param('id') id : number, @Body() body : CreateMessageBody) {
-        const message = await this.channelMessagesService.create({
-            channelId: id,
-            userId: 3, // TODO
-            text: body.text
-        });
+    async createChannelMessage(
+        @Param('id') id : number,
+        @Body() body : CreateMessageBody,
+        @CurrentUser() user : User) {
+            
+            const message = await this.channelMessagesService.create({
+                channelId: id,
+                userId: user.id,
+                text: body.text
+            });
 
-        this.channelMessagesGateway.emitMessageCreated(message);
+            this.channelMessagesGateway.emitMessageCreated(message);
 
-        return message;
-    }
+            return message;
+        }
 }
