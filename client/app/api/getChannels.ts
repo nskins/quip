@@ -1,7 +1,7 @@
 'use server'
 
 import { cookies } from "next/headers";
-import { Channel } from "./channel";
+import { Channel } from "(routes)/channels/[name]/channel";
 
 export async function getChannels(): Promise<Channel[]> {
 

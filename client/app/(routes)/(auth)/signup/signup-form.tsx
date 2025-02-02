@@ -1,6 +1,6 @@
 'use client'
 import { useActionState } from 'react'
-import { signup } from './signup'
+import { signup } from 'api/signup'
 
 export default function SignupForm() {
     const initialState = {

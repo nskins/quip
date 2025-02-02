@@ -1,4 +1,4 @@
-import { GetChannelMessageDto } from "./getChannelMessages"
+import { GetChannelMessageDto } from "api/getChannelMessages"
 
 export default function MessageList({ 
     messages 

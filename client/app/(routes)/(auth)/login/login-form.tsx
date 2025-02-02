@@ -1,6 +1,6 @@
 'use client'
 import { useActionState } from 'react'
-import { login } from './login'
+import { login } from 'api/login'
 
 export default function LoginForm() {
     const initialState = {

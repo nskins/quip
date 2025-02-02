@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import SendIcon from "./send-icon";
-import { createChannelMessage } from "./createChannelMessage";
+import { createChannelMessage } from "api/createChannelMessage";
 
 export default function NewMessagePiece({
     channelId
