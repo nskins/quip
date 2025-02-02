@@ -12,7 +12,9 @@ export async function signup(previousState: { error: string }, formData: FormDat
     if (password !== confirm_password)
         return { error: 'Passwords do not match' }
 
-    const data = await fetch('http://localhost:3001/auth/signup', {
+    const api_host = process.env.API_HOST
+
+    const data = await fetch(`${api_host}/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, password: password })

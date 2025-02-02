@@ -11,7 +11,9 @@ export async function getChannels(): Promise<Channel[]> {
 
     // TODO: if access token is empty/null, redirect to login page.
 
-    const data = await fetch('http://localhost:3001/channels', {
+    const api_host = process.env.API_HOST
+
+    const data = await fetch(`${api_host}/channels`, {
         headers: { 'Authorization': `Bearer ${access_token}` }
     })
 

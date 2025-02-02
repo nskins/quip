@@ -7,7 +7,9 @@ export async function login(previousState: { error: string }, formData: FormData
     const email = formData.get('email')
     const password = formData.get('password')
 
-    const data = await fetch('http://localhost:3001/auth/login', {
+    const api_host = process.env.API_HOST
+
+    const data = await fetch(`${api_host}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, password: password })

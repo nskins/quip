@@ -25,7 +25,9 @@ export async function createChannelMessage({
 
     // TODO: if access token is empty/null, redirect to login page.
 
-    const data = await fetch(`http://localhost:3001/channels/${channelId}/messages`, {
+    const api_host = process.env.API_HOST
+
+    const data = await fetch(`${api_host}/channels/${channelId}/messages`, {
         method: 'POST',
         headers: { 
             'Authorization': `Bearer ${access_token}`,
