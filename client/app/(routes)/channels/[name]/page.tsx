@@ -2,7 +2,7 @@
 import ChannelNavbar from "./channel-navbar";
 import { getChannels } from "./getChannels";
 import { GetChannelMessageDto, getChannelMessages } from "./getChannelMessages"
-import { socket } from '../../socket';
+import { socket } from '../../../socket';
 import MessageList from "./message-list";
 import Header from "./header";
 import NewMessagePiece from "./new-message-piece";
