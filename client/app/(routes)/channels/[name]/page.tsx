@@ -32,7 +32,8 @@ export default function ChannelNamePage() {
         }
 
         function onMessageCreated(message : GetChannelMessageDto) {
-            setMessages([...messages, message]);
+            if (message.channel.id === activeChannelId)
+                setMessages([...messages, message]);
         }
 
         socket.on('connect', onConnect);
