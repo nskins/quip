@@ -2,7 +2,7 @@ import { DataSource, DataSourceOptions } from "typeorm";
 
 export const dataSourceOptions: DataSourceOptions = {
     type: "sqlite",
-    database: "flamchat-db.sqlite3",
+    database: "db.sqlite3",
     entities: ['dist/**/*.entity{.ts,.js}'],
     migrations: ['dist/db/migrations/*.js']
 };
