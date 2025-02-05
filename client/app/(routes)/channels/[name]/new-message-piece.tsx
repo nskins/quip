@@ -10,17 +10,24 @@ export default function NewMessagePiece({
 }) {
     const [text, setText] = useState("");
 
+    const handleNewMessage = () => {
+        createChannelMessage({channelId, text})
+        setText("")
+    }
+
     return (
         <div className="flex flex-row h-16 text-black gap-2">
             <textarea 
                 onChange={e => setText(e.target.value)}
                 className="grow resize-none"
-                value={text} />
+                value={text}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        handleNewMessage()
+                    }}} />
             <button
-                onClick={() => {
-                    createChannelMessage({channelId, text})
-                    setText("")
-                }}
+                onClick={handleNewMessage}
                 className="bg-pink-300 p-2 rounded-md">
                     <SendIcon />
             </button>
