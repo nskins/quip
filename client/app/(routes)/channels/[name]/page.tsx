@@ -75,10 +75,10 @@ export default function ChannelNamePage() {
     return (
         <div className="flex flex-col h-screen">
             <Header />
-            <div className="flex flex-row w-screen grow">
+            <div className="flex flex-row w-screen grow overflow-y-auto">
                 <ChannelNavbar channels={channels} activeChannelId={activeChannelId} />
                 <div className="flex flex-col w-screen">
-                    <div className="grow">
+                    <div className="grow overflow-y-auto">
                         <MessageList messages={messages} />
                     </div>
                     <div>
