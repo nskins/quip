@@ -11,12 +11,16 @@ export default function NewMessagePiece({
     const [text, setText] = useState("");
 
     return (
-        <div className="flex flex-row h-16 text-black">
+        <div className="flex flex-row h-16 text-black gap-2">
             <textarea 
                 onChange={e => setText(e.target.value)}
-                className="grow" />
+                className="grow resize-none"
+                value={text} />
             <button
-                onClick={() => createChannelMessage({channelId, text})}
+                onClick={() => {
+                    createChannelMessage({channelId, text})
+                    setText("")
+                }}
                 className="bg-pink-300 p-2 rounded-md">
                     <SendIcon />
             </button>

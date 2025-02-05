@@ -81,7 +81,7 @@ export default function ChannelNamePage() {
                     <div className="grow overflow-y-auto">
                         <MessageList messages={messages} />
                     </div>
-                    <div>
+                    <div className="mx-3 my-2">
                         <NewMessagePiece channelId={activeChannelId} />
                     </div>
                 </div>
