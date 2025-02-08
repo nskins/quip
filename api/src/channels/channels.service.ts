@@ -10,4 +10,14 @@ export class ChannelsService {
     async getAll(): Promise<Channel[]>{
         return await this.ChannelRepository.find();
     }
+
+    async getChannelByName(name : string) : Promise<Channel> {
+        const results = await this.ChannelRepository.find({
+            where: {
+                name: name
+            }
+        });
+
+        return results.length > 0 ? results[0] : null;
+    }
 }

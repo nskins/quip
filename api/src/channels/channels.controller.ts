@@ -27,6 +27,12 @@ export class ChannelsController {
     }
 
     @UseGuards(JwtAuthGuard)
+    @Get(':name')
+    async getChannelByName(@Param ('name') name : string): Promise<Channel> {
+        return await this.channelsService.getChannelByName(name);
+    }
+
+    @UseGuards(JwtAuthGuard)
     @Get(':id/messages')
     async getChannelMessagesBlock(@Param('id') id : number, @Query('timestamp') timestamp : Date) {
         return await this.channelMessagesService.getBlock(id, timestamp);

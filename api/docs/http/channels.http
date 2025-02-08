@@ -1,11 +1,16 @@
 @host = http://localhost:3001
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJpbmdAam9lLmNvbSIsInN1YiI6MywiaWF0IjoxNzM4MDIzMjY3LCJleHAiOjE3MzgxMDk2Njd9.Iq5NdoIyETfJhgCjl0nSbHITIRz4NUgnmTPq_2Tf1Fs
-@channelId = 1
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHF1aXAuY29tIiwic3ViIjoxLCJpYXQiOjE3Mzg5ODMxMzEsImV4cCI6MTczOTA2OTUzMX0.qxomxK0mtF_RuoFzjfdvlUHzfIrUt2wJvvqwxadUiDs
+@channelId = 2
 @timestamp = 2025-01-30T12:00:00
+@name = sports
 
 ### Get channels
 
 GET {{host}}/channels HTTP/1.1
+Authorization: Bearer {{token}}
+
+### Get channel by name
+GET {{host}}/channels/{{name}} HTTP/1.1
 Authorization: Bearer {{token}}
 
 ### Get channel messages
