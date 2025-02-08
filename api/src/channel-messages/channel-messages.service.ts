@@ -10,7 +10,7 @@ export class ChannelMessagesService {
     constructor(@InjectRepository(ChannelMessage) private ChannelMessageRepository : Repository<ChannelMessage>) {}
 
     async getBlock(channelId : number, timestamp : Date) {
-        return await this.ChannelMessageRepository.find({
+        var messages = await this.ChannelMessageRepository.find({
             relations: {
                 channel: true,
                 user: true
@@ -21,8 +21,13 @@ export class ChannelMessagesService {
                 },
                 createdAt: LessThan(timestamp)
             },
+            order: {
+                id: "DESC"
+            },
             take: MessageBlockSize
         });
+
+        return messages.reverse();
     }
 
     async getById(id : number) : Promise<ChannelMessage | null> {
