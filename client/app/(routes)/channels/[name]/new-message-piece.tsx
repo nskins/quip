@@ -21,6 +21,7 @@ export default function NewMessagePiece({
                 onChange={e => setText(e.target.value)}
                 className="grow resize-none"
                 value={text}
+                placeholder="Enter a message..."
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                         e.preventDefault();
