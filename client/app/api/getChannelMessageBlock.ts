@@ -1,9 +1,23 @@
 'use server'
 
 import { cookies } from "next/headers";
-import { GetChannelMessageDto } from "./getChannelMessageBlock";
 
-export async function getChannelMessages({
+export type GetChannelMessageDto = {
+    id : number
+    text : string
+    createdAt : Date
+    updatedAt : Date
+    channel : {
+        id : number
+        name : string
+    }
+    user : {
+        id : number
+        email : string
+    }
+}
+
+export async function getChannelMessageBlock({
     channelId,
     timestamp
 } : {
@@ -19,7 +33,7 @@ export async function getChannelMessages({
 
     const api_host = process.env.API_HOST
 
-    const data = await fetch(`${api_host}/channels/${channelId}/messages`, {
+    const data = await fetch(`${api_host}/channels/${channelId}/messages?timestamp=${timestamp}`, {
         headers: { 'Authorization': `Bearer ${access_token}` }
     })
 

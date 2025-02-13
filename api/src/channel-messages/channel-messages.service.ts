@@ -30,6 +30,22 @@ export class ChannelMessagesService {
         return messages.reverse();
     }
 
+    async getMessages(channelId : number) {
+        var messages = await this.ChannelMessageRepository.find({
+            relations: {
+                channel: true,
+                user: true
+            },
+            where: {
+                channel: {
+                    id: channelId
+                }
+            }
+        });
+
+        return messages
+    }
+
     async getById(id : number) : Promise<ChannelMessage | null> {
         const results = await this.ChannelMessageRepository.find({
             relations: {

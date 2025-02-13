@@ -60,11 +60,8 @@ export default function ChannelNamePage() {
 
             setActiveChannelId(activeChannel.id)
 
-            const currentTime = new Date().toISOString()
-
             const messages = await getChannelMessages({
-                channelId: activeChannel.id, 
-                timestamp: currentTime 
+                channelId: activeChannel.id
             })
             setMessages(messages);
         }

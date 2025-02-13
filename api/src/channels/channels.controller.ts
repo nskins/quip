@@ -28,8 +28,10 @@ export class ChannelsController {
 
     @UseGuards(JwtAuthGuard)
     @Get(':id/messages')
-    async getChannelMessagesBlock(@Param('id') id : number, @Query('timestamp') timestamp : Date) {
-        return await this.channelMessagesService.getBlock(id, timestamp);
+    async getChannelMessages(@Param('id') id : number, @Query('timestamp') timestamp : Date) {
+        return timestamp === undefined ?
+            await this.channelMessagesService.getMessages(id) :
+            await this.channelMessagesService.getBlock(id, timestamp);
     }
 
     @UseGuards(JwtAuthGuard)
