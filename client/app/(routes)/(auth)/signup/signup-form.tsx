@@ -10,14 +10,14 @@ export default function SignupForm() {
     const [state, formAction] = useActionState(signup, initialState);
 
     return (
-        <div className="flex flex-col gap-4 w-80">
+        <div className="flex flex-col gap-4 w-80 bg-pink-400 p-4 rounded-lg text-black">
             <h1>Create Account</h1>
             {state && state.error && <p>{state.error}</p>}
             <form action={formAction} className="flex flex-col gap-4">
-                <input type="email" name="email" required placeholder="Email" />
-                <input type="password" name="password" required placeholder="Password" />
-                <input type="password" name="confirm_password" required placeholder="Confirm password" />
-                <button type="submit">Sign up</button>
+                <input className="p-1 rounded-md" type="email" name="email" required placeholder="Email" />
+                <input className="p-1 rounded-md" type="password" name="password" required placeholder="Password" />
+                <input className="p-1 rounded-md" type="password" name="confirm_password" required placeholder="Confirm password" />
+                <button className="p-1 bg-pink-200 rounded-lg" type="submit">Sign up</button>
             </form>
         </div>
     )
