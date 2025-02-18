@@ -30,6 +30,9 @@ export default function SignupForm() {
             title="Create an account"
             inputs={inputs}
             submitText="Sign up"
+            linkPrompt="Already have an account?"
+            linkHref="/login"
+            linkText="Log in"
         />
     )
 }

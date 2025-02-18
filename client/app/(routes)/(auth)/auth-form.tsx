@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import { ReactNode, useActionState } from 'react'
 
 type ErrorState = { error: string };
@@ -7,12 +8,18 @@ export default function AuthForm({
     onSubmit,
     title,
     inputs,
-    submitText
+    submitText,
+    linkPrompt,
+    linkText,
+    linkHref,
 } : {
     onSubmit: (previousState: ErrorState, formData: FormData) => Promise<ErrorState>,
     title: string,
     inputs: ReactNode,
-    submitText: string
+    submitText: string,
+    linkPrompt: string,
+    linkText: string,
+    linkHref: string
 }) {
     const initialState = {
         error: ''
@@ -28,6 +35,7 @@ export default function AuthForm({
                 {inputs}
                 <button className="p-1 bg-pink-200 rounded-lg" type="submit">{submitText}</button>
             </form>
+            <div className="text-lg">{linkPrompt} <Link href={linkHref} className="text-blue-700">{linkText}</Link></div>
         </div>
     )
 }

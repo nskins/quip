@@ -25,6 +25,9 @@ export default function LoginForm() {
             title="Login"
             inputs={inputs}
             submitText="Log in"
+            linkPrompt="Don't have an account?"
+            linkHref="/signup"
+            linkText="Sign up"
         />
     )
 }
