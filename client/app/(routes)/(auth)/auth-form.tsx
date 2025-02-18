@@ -30,7 +30,7 @@ export default function AuthForm({
     return (
         <div className="flex flex-col gap-4 w-80 bg-pink-400 p-4 rounded-lg text-black">
             <h1>{title}</h1>
-            {state && state.error && <p>{state.error}</p>}
+            {state && state.error && <div className="bg-red-600 text-white p-2 rounded-lg">{state.error}</div>}
             <form action={formAction} className="flex flex-col gap-4">
                 {inputs}
                 <button className="p-1 bg-pink-200 rounded-lg" type="submit">{submitText}</button>
