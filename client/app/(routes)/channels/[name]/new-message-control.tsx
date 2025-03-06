@@ -3,7 +3,7 @@ import { useState } from "react";
 import SendIcon from "./send-icon";
 import { createChannelMessage } from "api/createChannelMessage";
 
-export default function NewMessagePiece({
+export default function NewMessageControl({
     channelId
 } : {
     channelId : number
