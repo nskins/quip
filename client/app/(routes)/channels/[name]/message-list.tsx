@@ -23,7 +23,9 @@ export default function MessageList({
     return (
         <div className="flex flex-col w-full">
             {groups && Object.keys(groups).map(g => {
-                return (
+                
+                return groups[g] !== undefined ? 
+                (
                     <div key={g}>
                         <div className="flex font-bold text-pink-300 justify-center p-2">{getDateHeader(groups[g][0])}</div>
                         <div className="flex flex-col gap-2">
@@ -38,7 +40,8 @@ export default function MessageList({
                             )}
                         </div>
                     </div>
-                )
+                ) :
+                <></>
             })}
             <div ref={endRef} />
         </div>
