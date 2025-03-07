@@ -50,7 +50,7 @@ export default function MessageList({
 
 function getDateHeader(exampleMessage : GetChannelMessageDto)
 {
-    var options = { 
+    var options: Intl.DateTimeFormatOptions = {
         weekday: 'long',
         year: 'numeric',
         month: 'long', 
