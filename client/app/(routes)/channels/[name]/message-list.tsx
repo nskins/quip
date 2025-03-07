@@ -29,7 +29,10 @@ export default function MessageList({
                         <div className="flex flex-col gap-2">
                             {groups[g] && groups[g].map(m =>
                                 <div key={m.id} className="bg-pink-50 text-black rounded-lg mx-2 p-1">
-                                    <div>{m.user.email} · {new Date(m.createdAt).toLocaleTimeString("en-US")}</div>
+                                    <div>
+                                        <span className="font-bold">{m.user.email}</span> ·
+                                        <span>{new Date(m.createdAt).toLocaleTimeString("en-US")}</span>
+                                    </div>
                                     <div>{m.text}</div>
                                 </div>
                             )}
