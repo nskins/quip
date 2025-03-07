@@ -25,7 +25,7 @@ export default function MessageList({
             {groups && Object.keys(groups).map(g => {
                 return (
                     <div key={g}>
-                        <div>{getDateHeader(groups[g][0])}</div>
+                        <div className="flex justify-center p-1">{getDateHeader(groups[g][0])}</div>
                         {groups[g] && groups[g].map(m =>
                             <div key={m.id} className="mx-4 my-2">
                                 <div>{m.user.email} · {new Date(m.createdAt).toLocaleTimeString("en-US")}</div>
