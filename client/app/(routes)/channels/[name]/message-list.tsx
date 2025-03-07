@@ -25,13 +25,15 @@ export default function MessageList({
             {groups && Object.keys(groups).map(g => {
                 return (
                     <div key={g}>
-                        <div className="flex justify-center p-1">{getDateHeader(groups[g][0])}</div>
-                        {groups[g] && groups[g].map(m =>
-                            <div key={m.id} className="mx-4 my-2">
-                                <div>{m.user.email} · {new Date(m.createdAt).toLocaleTimeString("en-US")}</div>
-                                <div>{m.text}</div>
-                            </div>
-                        )}
+                        <div className="flex font-bold justify-center p-2">{getDateHeader(groups[g][0])}</div>
+                        <div className="flex flex-col gap-2">
+                            {groups[g] && groups[g].map(m =>
+                                <div key={m.id} className="bg-pink-50 text-black rounded-lg mx-2 p-1">
+                                    <div>{m.user.email} · {new Date(m.createdAt).toLocaleTimeString("en-US")}</div>
+                                    <div>{m.text}</div>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 )
             })}
