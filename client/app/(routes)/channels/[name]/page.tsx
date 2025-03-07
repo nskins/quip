@@ -5,7 +5,7 @@ import { GetChannelMessageDto, getChannelMessages } from "api/getChannelMessages
 import { socket } from 'socket';
 import MessageList from "./message-list";
 import Header from "./header";
-import NewMessagePiece from "./new-message-piece";
+import NewMessageControl from "./new-message-control";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { Channel } from "./channel";
@@ -79,7 +79,7 @@ export default function ChannelNamePage() {
                         <MessageList messages={messages} />
                     </div>
                     <div className="mx-3 my-2">
-                        <NewMessagePiece channelId={activeChannelId} />
+                        <NewMessageControl channelId={activeChannelId} />
                     </div>
                 </div>
             </div>

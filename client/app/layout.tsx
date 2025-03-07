@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Quip",
-  description: "A chat app for hooligans and delinquents."
+  description: "A chat app for trendsetters and go-getters."
 };
 
 export default function RootLayout({

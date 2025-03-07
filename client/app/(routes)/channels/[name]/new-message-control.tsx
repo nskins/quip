@@ -3,7 +3,7 @@ import { useState } from "react";
 import SendIcon from "./send-icon";
 import { createChannelMessage } from "api/createChannelMessage";
 
-export default function NewMessagePiece({
+export default function NewMessageControl({
     channelId
 } : {
     channelId : number
@@ -19,7 +19,7 @@ export default function NewMessagePiece({
         <div className="flex flex-row h-16 text-black gap-2">
             <textarea 
                 onChange={e => setText(e.target.value)}
-                className="grow resize-none"
+                className="p-1 grow resize-none"
                 value={text}
                 placeholder="Enter a message..."
                 onKeyDown={(e) => {
