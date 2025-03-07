@@ -30,7 +30,7 @@ export default function MessageList({
                             {groups[g] && groups[g].map(m =>
                                 <div key={m.id} className="bg-pink-50 text-black rounded-lg mx-2 p-1">
                                     <div>
-                                        <span className="font-bold">{m.user.email}</span> ·
+                                        <span className="font-bold">{m.user.email}</span><span> · </span>
                                         <span>{new Date(m.createdAt).toLocaleTimeString("en-US")}</span>
                                     </div>
                                     <div>{m.text}</div>
